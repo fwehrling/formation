@@ -1,0 +1,15 @@
+<!-- {{ todos$ | async | json }} -->
+
+<app-jour3-enfant
+  [books]="books$ | async"
+  [todos]="todos$ | async"
+  (remove)="removeBook($event)"
+  (delete)="removeTodo($event)"
+></app-jour3-enfant>
+
+<p appHighlight [color]="color">TEST D'UNE DIRECTIVE</p>
+
+<input appRainbow />
+<br /><br />
+<button (click)="removeElement()">Supprimer un élément</button>
+{{ test.length }}

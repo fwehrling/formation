@@ -1,0 +1,17 @@
+<ul>
+  <li *ngFor="let book of books" appHighlight>
+    {{ book.auteur }} a écrit {{ book.titre }} qui contient
+    {{ book.pages }} pages
+    <button (click)="removeBook(book.id)">Supprimer</button>
+  </li>
+</ul>
+
+<ul>
+  <li *ngFor="let todo of todos">
+    <input type="checkbox" [checked]="todo.completed" />{{ todo.title }}
+    <button (click)="removeTodo(todo.id)">Supprimer</button>
+    <button (click)="detailTodo(todo.id)">Fiche</button>
+  </li>
+</ul>
+
+<button (click)="goto()">Go to jour 2</button>

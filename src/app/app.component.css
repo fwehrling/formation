@@ -1,0 +1,15 @@
+ul {
+  margin-bottom: 50px;
+}
+
+li {
+  display: inline;
+  margin-right: 20px;
+  height: 50px;
+  background-color: beige;
+  padding: 20px;
+}
+
+.selected-menu {
+  background-color: yellow;
+}
