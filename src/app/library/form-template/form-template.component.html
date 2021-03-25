@@ -1,0 +1,48 @@
+<h2>Se connecter</h2>
+<!-- <form (ngSubmit)="register(userForm.value)" #userForm="ngForm">
+  <div>
+    <label>Username</label>
+    <input name="username" ngModel />
+  </div>
+  <div>
+    <label>Password</label>
+    <input type="password" name="password" ngModel />
+  </div>
+  <button type="submit">Register</button>
+</form> -->
+
+<form (ngSubmit)="register()" #userForm="ngForm">
+  <div>
+    <label>Username</label>
+    <input
+      name="username"
+      [(ngModel)]="user.username"
+      required
+      #username="ngModel"
+    />
+    <div
+      style="color: red"
+      *ngIf="username.dirty && username.hasError('required')"
+    >
+      Username is required
+    </div>
+  </div>
+  <div>
+    <label>Password</label>
+    <input
+      type="password"
+      name="password"
+      [(ngModel)]="user.password"
+      required
+      #password="ngModel"
+    />
+    <div
+      style="color: red"
+      *ngIf="password.dirty && password.hasError('required')"
+    >
+      Password is required
+    </div>
+  </div>
+  <button type="submit" [disabled]="userForm.invalid">Register</button>
+</form>
+{{ userForm.valid }}

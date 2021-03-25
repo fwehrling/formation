@@ -1,0 +1,52 @@
+<h2>Se connecter</h2>
+<form (ngSubmit)="register()" [formGroup]="userForm">
+  <div>
+    <label>Username</label>
+    <input formControlName="username" />
+    <div style="color: red" *ngIf="usernameCtrl.dirty">
+      <div *ngIf="usernameCtrl.hasError('required')">Username is required</div>
+      <div *ngIf="usernameCtrl.hasError('minlength')">
+        Username should be 3 characters min
+      </div>
+      <div *ngIf="usernameCtrl.hasError('alreadyUsed')">Already used !</div>
+    </div>
+  </div>
+
+  <div formGroupName="passwordForm">
+    <div>
+      <label>Password</label>
+      <input style="color: red" type="password" formControlName="password" />
+      <div *ngIf="passwordCtrl.dirty && passwordCtrl.hasError('required')">
+        Password is required
+      </div>
+    </div>
+    <div>
+      <label>Confirm password</label>
+      <input type="password" formControlName="confirm" />
+      <div
+        style="color: red"
+        *ngIf="confirmCtrl.dirty && confirmCtrl.hasError('required')"
+      >
+        Confirm is required
+      </div>
+    </div>
+    <div
+      style="color: red"
+      *ngIf="passwordForm.dirty && passwordForm.hasError('matchingError')"
+    >
+      Your password does not match
+    </div>
+  </div>
+
+  <div>
+    <label>Birth date</label>
+    <input type="date" formControlName="birthday" />
+    <div style="color: red" *ngIf="birthdayCtrl.dirty">
+      <div *ngIf="birthdayCtrl.hasError('required')">
+        Birth date is required
+      </div>
+      <div *ngIf="birthdayCtrl.hasError('tooYoung')">You're way too young</div>
+    </div>
+  </div>
+  <button type="submit" [disabled]="userForm.invalid">Register</button>
+</form>

@@ -2,6 +2,20 @@
   <li routerLink="/jour1" routerLinkActive="selected-menu">Jour 1</li>
   <li routerLink="/jour2" routerLinkActive="selected-menu">Jour 2</li>
   <li routerLink="/jour3" routerLinkActive="selected-menu">Jour 3</li>
+  <li routerLink="/jour4" routerLinkActive="selected-menu">Jour 4</li>
+  <li
+    routerLink="/library"
+    routerLinkActive="selected-menu"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    Library
+  </li>
+  <li routerLink="/library/form-template" routerLinkActive="selected-menu">
+    Form Template
+  </li>
+  <li routerLink="/library/form-code" routerLinkActive="selected-menu">
+    Form Code
+  </li>
 </ul>
 
 <router-outlet></router-outlet>

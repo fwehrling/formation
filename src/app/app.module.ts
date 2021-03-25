@@ -15,6 +15,8 @@ import { DoNothingDirective } from './shared/do-nothing.directive';
 import { HighlightDirective } from './shared/highlight.directive';
 import { RainbowDirective } from './shared/rainbow.directive';
 import { ParametreComponent } from './parametre/parametre.component';
+import { Jour4Component } from './jour4/jour4.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,8 +32,15 @@ import { ParametreComponent } from './parametre/parametre.component';
     HighlightDirective,
     RainbowDirective,
     ParametreComponent,
+    Jour4Component,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
