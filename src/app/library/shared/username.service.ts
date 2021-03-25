@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -7,7 +7,7 @@ import { of } from 'rxjs';
 export class UsernameService {
   constructor() {}
 
-  isUsernameAvailable(value: string) {
+  isUsernameAvailable(value: string): Observable<boolean> {
     return of(false);
   }
 }

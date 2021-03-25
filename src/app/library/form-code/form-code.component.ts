@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
+  AsyncValidatorFn,
   FormBuilder,
   FormControl,
   FormGroup,
@@ -39,24 +40,22 @@ export class FormCodeComponent implements OnInit {
     return password === confirm ? null : { matchingError: true };
   }
 
-  isUsernameAvailable(control: AbstractControl) {
-    const username = control.value;
+  isUsernameAvailable(): AsyncValidatorFn {
+    return (control: AbstractControl) => {
+      const username = control.value;
 
-    return this.usernameService
-      .isUsernameAvailable(username)
-      .pipe(map((available) => (available ? null : { alreadyUsed: true })))
-      .subscribe((error) => {
-        console.log('error', error);
-        return error;
-      });
+      return this.usernameService
+        .isUsernameAvailable(username)
+        .pipe(map((available) => (available ? null : { alreadyUsed: true })));
+    };
   }
 
   ngOnInit(): void {
-    this.usernameCtrl = this.fb.control('', [
-      Validators.required,
-      Validators.minLength(3),
-      (control) => this.isUsernameAvailable(control),
-    ]);
+    this.usernameCtrl = this.fb.control(
+      '',
+      [Validators.required, Validators.minLength(3)],
+      [this.isUsernameAvailable()]
+    );
 
     this.passwordCtrl = this.fb.control('', Validators.required);
 
